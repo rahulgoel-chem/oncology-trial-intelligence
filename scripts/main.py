@@ -203,10 +203,18 @@ print("Report generated:", report_path)
 # ============================================
 # MODULE 5 — EMAIL
 # ============================================
+import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
 
-EMAIL_USER = os.getenv("theranode@gmail.com")
-EMAIL_PASS = os.getenv("R@hul046goel")
-EMAIL_TO = os.getenv("goel.rahul07@gmail.com")
+report_path = "output/report.pdf"
+
+EMAIL_USER = "theranode@gmail.com"
+EMAIL_PASS = "kwut yzqj fddz vtlz"   # paste app password here
+EMAIL_TO = "goel.rahul07@gmail.com"
+
 
 if EMAIL_USER:
 
@@ -232,4 +240,4 @@ if EMAIL_USER:
     server.send_message(msg)
     server.quit()
 
-    print("Email sent")
+    print("✅ Email sent successfully")
