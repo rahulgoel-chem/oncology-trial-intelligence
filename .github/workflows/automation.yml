@@ -25,9 +25,9 @@ jobs:
 
     - name: Run Pipeline
       env:
-        EMAIL_USER: ${{ secrets.theranode@gmail.com }}
-        EMAIL_PASS: ${{ secrets.R@hul046 }}
-        EMAIL_TO: ${{ secrets.goel.rahul07@gmail.com }}
+        EMAIL_USER: ${{ theranode@gmail.com }}
+        EMAIL_PASS: ${{ R@hul046 }}
+        EMAIL_TO: ${{ goel.rahul07@gmail.com }}
       run: python scripts/main.py
 
     - name: Commit Files
