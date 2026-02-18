@@ -209,14 +209,14 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 
-report_path = "output/report.pdf"
+report_path = "output/report.docx"
 
-EMAIL_USER = "theranode@gmail.com"
-EMAIL_PASS = "kwutyzqjfddzvtlz"   # paste app password here
-EMAIL_TO = "goel.rahul07@gmail.com"
+EMAIL_USER = os.getenv("theranode@gmail.com")
+EMAIL_PASS = os.getenv("kwutyzqjfddzvtlz")
+EMAIL_TO = os.getenv("goel.rahul07@gmail.com")
 
 
-if EMAIL_USER:
+if EMAIL_USER and EMAIL_PASS:
 
     msg = MIMEMultipart()
     msg["From"] = EMAIL_USER
@@ -224,10 +224,12 @@ if EMAIL_USER:
     msg["Subject"] = "Oncology Intelligence Report"
 
     part = MIMEBase("application", "octet-stream")
+
     with open(report_path, "rb") as f:
         part.set_payload(f.read())
 
     encoders.encode_base64(part)
+
     part.add_header(
         "Content-Disposition",
         f"attachment; filename={os.path.basename(report_path)}"
@@ -241,3 +243,4 @@ if EMAIL_USER:
     server.quit()
 
     print("✅ Email sent successfully")
+
