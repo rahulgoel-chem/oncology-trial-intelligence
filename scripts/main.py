@@ -212,7 +212,7 @@ from email import encoders
 report_path = "output/report.pdf"
 
 EMAIL_USER = "theranode@gmail.com"
-EMAIL_PASS = "kwut yzqj fddz vtlz"   # paste app password here
+EMAIL_PASS = "kwutyzqjfddzvtlz"   # paste app password here
 EMAIL_TO = "goel.rahul07@gmail.com"
 
 
