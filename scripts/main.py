@@ -204,9 +204,9 @@ print("Report generated:", report_path)
 # MODULE 5 — EMAIL
 # ============================================
 
-EMAIL_USER = os.getenv("EMAIL_USER")
-EMAIL_PASS = os.getenv("EMAIL_PASS")
-EMAIL_TO = os.getenv("EMAIL_TO")
+EMAIL_USER = os.getenv("theranode@gmail.com")
+EMAIL_PASS = os.getenv("R@hul046")
+EMAIL_TO = os.getenv("goel.rahul07@gmail.com")
 
 if EMAIL_USER:
 
