@@ -1,39 +1,29 @@
-name: Oncology Automation
+name: Oncology Pipeline
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # Every 4 hours
+    - cron: "0 */4 * * *"   # every 4 hours
   workflow_dispatch:
 
 jobs:
-  run-pipeline:
-
+  run:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Checkout Repo
-      uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.10
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - name: Install Dependencies
-      run: pip install -r requirements.txt
-
-    - name: Run Pipeline
-      env:
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
-        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-        EMAIL_TO: ${{ secrets.EMAIL_TO }}
-      run: python scripts/main.py
-
-    - name: Commit Files
-      run: |
-        git config --global user.name "bot"
-        git config --global user.email "bot@github.com"
-        git add .
-        git commit -m "Auto update"
-        git push
+      - name: Run Pipeline
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python scripts/main.py
